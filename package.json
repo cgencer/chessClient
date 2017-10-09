@@ -1,0 +1,23 @@
+{
+  "name": "piyon",
+  "version": "0.0.1",
+  "description": "chess client to be used for piyonsatranc.com",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgencer/chessClient.git"
+  },
+  "keywords": [
+    "chess",
+    "javascript"
+  ],
+  "author": "Cem Gencer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cgencer/chessClient/issues"
+  },
+  "homepage": "https://github.com/cgencer/chessClient#readme"
+}
