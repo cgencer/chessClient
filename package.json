@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/cgencer/chessClient/issues"
   },
-  "homepage": "https://github.com/cgencer/chessClient#readme"
+  "homepage": "https://github.com/cgencer/chessClient#readme",
+  "dependencies": {
+    "async": "^2.5.0",
+    "crypto": "^1.0.1",
+    "gamesparks-node": "^1.0.0",
+    "http": "0.0.0",
+    "stockfish": "^6.0.5"
+  }
 }

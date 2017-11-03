@@ -1,0 +1,9 @@
+{
+	"port": 9090,
+	"gameApiKey": "E321779YJKZy",
+	"secret": "NFbC7rABwEZ3qdhJU6K6Ph7lt8zZ5SwV",
+	"testUser": {
+		"username": "test",
+		"password": "123"
+	}
+}
