@@ -1,0 +1,30 @@
+{
+	"info": {
+		"name": "Piyon Chess GameSparks stuff",
+		"_postman_id": "e8195772-0beb-5a7a-de22-03cc22bf112e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "basic nonce creation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:9090/any",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"any"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

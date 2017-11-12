@@ -1,9 +1,14 @@
 {
 	"port": 9090,
 	"gameApiKey": "E321779YJKZy",
-	"secret": "NFbC7rABwEZ3qdhJU6K6Ph7lt8zZ5SwV",
+	"url": "wss://preview-xxx.ws.gamesparks.net/ws/server/xxx",
+	"secret": "YXL8BWoqj1rLqBirdnL2VM68K70RnZeL",
 	"testUser": {
 		"username": "test",
 		"password": "123"
+	},
+	"okc": {
+		"username": "obsesif",
+		"password": "gudubet"
 	}
 }
