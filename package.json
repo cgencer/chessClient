@@ -24,11 +24,20 @@
     "async": "^2.5.0",
     "crypto": "^1.0.1",
     "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
+    "express-jade": "0.0.3",
     "gamesparks-node": "^1.0.0",
     "gamesparks-sdk": "^1.0.0",
     "http": "0.0.0",
+    "jade-bootstrap": "^1.0.14",
+    "lodash": "^4.17.4",
+    "nib": "^1.1.2",
     "okcupidjs": "^1.1.0",
+    "path": "^0.12.7",
+    "run-parallel": "^1.1.6",
+    "serve-static": "^1.13.1",
     "stockfish": "^6.0.5",
+    "stylus": "^0.54.5",
     "ws": "^3.3.1"
   }
 }
