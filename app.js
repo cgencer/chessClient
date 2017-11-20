@@ -10,6 +10,7 @@ var express = require('express'),
 	expressJade = require('express-jade'),
 	serveStatic = require('serve-static'),
 	stylus = require('stylus'),
+	pug = require('pug'),
 	nib = require('nib');
 
 var CryptoJS = require("crypto-js");
@@ -28,16 +29,19 @@ function onErr( err ) {
 	process.exit( 1 );
 }
 
-var app = express()
+var app = express();
 app.set('views', __dirname + '/public/views/');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
+app.locals.basedir = app.get('views');
 //app.use(express.logger('dev'));
+
 app.use(stylus.middleware({ 
-	src: __dirname + '/public/views/',
+	src: __dirname + './',
 	compile: function(str, path) {
 		return stylus(str).set( 'filename', path ).use( nib() );
 	}
 }));
+
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function (req, res) {
@@ -45,17 +49,25 @@ app.get('/', function (req, res) {
 		{ title : 'Home' }
 	);
 });
-app.listen(3000);
+var server = app.listen(3000);
+var socket = require('socket.io').listen(server);
 
-/*
+function connector() {
+	console.log( "Gamesparks sever is ready for your command!" );
+	socket.emit('console', "Gamesparks sever is ready for your command!");
+}
 
-gameSparks.initPreviewListener( config.gameApiKey, config.secret, 10, onMessage, app, onErr);
+socket.on('connection', function(socket){
+	socket.on('message', function(msg){
+		console.log('inited.');
+		if('initiate' == msg) {
+			gameSparks.initPreviewListener( config.gameApiKey, config.secret, 10, onMessage, connector, onErr);
+		}
+	});
+});
 
-function app() {
-	console.log( "Gamesparks ready!" );
 
 //	rip25Members();
-}
 
 function rip25Members() {
 	okc.login(config.okc.username, config.okc.password, function(err, res, body) {

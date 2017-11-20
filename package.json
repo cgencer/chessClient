@@ -34,8 +34,10 @@
     "nib": "^1.1.2",
     "okcupidjs": "^1.1.0",
     "path": "^0.12.7",
+    "pug": "^2.0.0-rc.4",
     "run-parallel": "^1.1.6",
     "serve-static": "^1.13.1",
+    "socket.io": "^2.0.4",
     "stockfish": "^6.0.5",
     "stylus": "^0.54.5",
     "ws": "^3.3.1"

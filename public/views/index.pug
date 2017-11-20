@@ -1,0 +1,26 @@
+extends template.pug
+include components/buttons
+
+block data
+	- var pageTitle = "Pudome"
+
+block content
+	h4(class="console") start a connection...
+	div(class="connect")
+		+a-btn-primary("#") connect!
+
+block pagescripts
+	script.
+		var socket = io();
+
+		$(function () {
+			$('.connect a.btn').on('click', function(){
+				$('h4.console').text( 'kickstarting...' );
+				socket.emit('message', 'initiate');
+				return false;
+			});
+		});
+
+		socket.on('console', function(msg){
+			$('h4.console').text( msg );
+		});
