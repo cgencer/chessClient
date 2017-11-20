@@ -53,8 +53,8 @@ var server = app.listen(3000);
 var socket = require('socket.io').listen(server);
 
 function connector() {
-	console.log( "Gamesparks sever is ready for your command!" );
-	socket.emit('console', "Gamesparks sever is ready for your command!");
+	console.log( "Gamesparks server is ready for your command!" );
+	socket.emit('console', "Gamesparks server is ready for your command!");
 }
 
 socket.on('connection', function(socket){
@@ -68,7 +68,7 @@ socket.on('connection', function(socket){
 
 
 //	rip25Members();
-
+/*
 function rip25Members() {
 	okc.login(config.okc.username, config.okc.password, function(err, res, body) {
 		var fArr = [];

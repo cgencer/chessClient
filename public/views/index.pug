@@ -9,6 +9,10 @@ block content
 	div(class="connect")
 		+a-btn-primary("#") connect!
 
+	div(class="commands" style="display:none;")
+		+a-btn-primary("#") scores
+		+a-btn-primary("#") users
+
 block pagescripts
 	script.
 		var socket = io();
@@ -23,4 +27,6 @@ block pagescripts
 
 		socket.on('console', function(msg){
 			$('h4.console').text( msg );
+			$('div.connect').css('display', 'none');
+			$('div.commands').css('display', 'block');
 		});
