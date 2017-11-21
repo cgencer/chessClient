@@ -59,10 +59,36 @@ function connector() {
 
 socket.on('connection', function(socket){
 	socket.on('message', function(msg){
-		console.log('inited.');
 		if('initiate' == msg) {
 			gameSparks.initPreviewListener( config.gameApiKey, config.secret, 10, onMessage, connector, onErr);
 		}
+	});
+	socket.on('login', function(msg){
+		async.waterfall([
+			function( cb ) {
+				gameSparks.sendAs( null, ".AuthenticationRequest", {
+					userName: msg,
+					password: config.testUser.password
+				}, function( err, user ) {
+					if ( err ) return cb( err );
+					else return cb( null, user );
+				});
+			}, function( user, cb ) {
+				// Get the user's account details
+				gameSparks.sendAs( user.userId, ".AccountDetailsRequest", {}, function( err, res ) {
+					if ( err ) return cb( err );
+					socket.emit('console', JSON.stringify( res, null, 2 ));
+
+//					console.log( "account details:", JSON.stringify( res, null, 2 ) );
+					cb( null, user );
+				});
+			},
+		], function( err ) {
+			if ( err ) console.log( err );
+			// If you want to listen for messages back from the Gamesparks server, then do
+			// not exit() here.  Just sit around and wait ...
+//			process.exit(0);
+		});
 	});
 });
 

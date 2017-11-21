@@ -1,5 +1,6 @@
 extends template.pug
 include components/buttons
+include components/dropdowns
 
 block data
 	- var pageTitle = "Pudome"
@@ -13,15 +14,40 @@ block content
 		+a-btn-primary("#") scores
 		+a-btn-primary("#") users
 
+	div(class="users" style="display:none;")
+		+dropdown("login as: ",[
+			{text:"Test User 01", alt:"test_01", url:"#"},
+			{text:"Test User 02", alt:"test_02", url:"#"},
+			{text:"Test User 03", alt:"test_03", url:"#"},
+			{text:"Test User 04", alt:"test_04", url:"#"},
+			{text:"Test User 05", alt:"test_05", url:"#"},
+			{text:"Test User 06", alt:"test_06", url:"#"},
+			{text:"Test User 07", alt:"test_07", url:"#"},
+			{text:"Test User 08", alt:"test_08", url:"#"},
+			{text:"Test User 09", alt:"test_09", url:"#"},
+		])
+		div(class="login" style="display:none;")
+			+a-btn-primary("#") login>
+
 block pagescripts
 	script.
 		var socket = io();
 
 		$(function () {
-			$('.connect a.btn').on('click', function(){
+			$(".connect a.btn").on('click', function(){
 				$('h4.console').text( 'kickstarting...' );
 				socket.emit('message', 'initiate');
 				return false;
+			});
+
+			$(".users a[role='menuitem']").on('click', function(){
+				$('.users .btn').text( 'login as: ' + $(this).text() );
+				$('.users .btn').attr('alt', $(this).attr('alt'));
+				$('div.login').css('display', 'block');
+			});
+
+			$(".login a.btn").on('click', function(){
+				socket.emit('login', $(this).attr('alt'));
 			});
 		});
 
@@ -29,4 +55,6 @@ block pagescripts
 			$('h4.console').text( msg );
 			$('div.connect').css('display', 'none');
 			$('div.commands').css('display', 'block');
+			$('div.users').css('display', 'block');
 		});
+
