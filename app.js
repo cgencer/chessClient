@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
 		{ title : 'Home' }
 	);
 });
-var server = app.listen(3000);
+var server = app.listen(config.port);
 var socket = require('socket.io').listen(server);
 
 function connector() {
@@ -78,8 +78,6 @@ socket.on('connection', function(socket){
 				gameSparks.sendAs( user.userId, ".AccountDetailsRequest", {}, function( err, res ) {
 					if ( err ) return cb( err );
 					socket.emit('console', JSON.stringify( res, null, 2 ));
-
-//					console.log( "account details:", JSON.stringify( res, null, 2 ) );
 					cb( null, user );
 				});
 			},
